@@ -8,15 +8,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/equipment', [EquipmentController::class, 'index'])->name('equipment.index');
+Route::get('equipment/listar',[EquipmentController::class,'index'])->name('equipment.index');
+Route::get('equipment/create',[EquipmentController::class,'create']);
+Route::post('equipment/store', [EquipmentController::class,'store'])->name('equipment.store');
+Route::get('equipment/{equipment}',[EquipmentController::class,'show'])->name('equipment.show');
+Route::put('equipment/{equipment}',[EquipmentController::class,'update'])->name('equipment.update');
+Route::delete('equipment/{destroy}',[EquipmentController::class,'destroy'])->name('equipment.destroy');
+Route::get('equipment/{equipment}/editar',[EquipmentController::class,'edit'])->name('equipment.edit');
 
-// Ruta para mostrar el formulario de creación de jugadores
-// Rutas para mostrar la lista y el formulario de creación de jugadores
-Route::get('/jugadores', [EquipmentController::class, 'index'])->name('players.index');
-Route::get('/jugadores/create', [EquipmentController::class, 'create'])->name('players.create');
-Route::post('/jugadores', [EquipmentController::class, 'store'])->name('players.store');
-
-// Rutas para mostrar el formulario de edición y actualizar y eliminar jugadores
-Route::get('/jugadores/{jugador}/edit', [PlayerController::class, 'edit'])->name('players.edit');
-Route::put('/jugadores/{jugador}', [PlayerController::class, 'update'])->name('players.update');
-Route::delete('/jugadores/{jugador}', [PlayerController::class, 'destroy'])->name('players.destroy');
+Route::get('equipment/listar',[PlayerController::class,'index'])->name('player.index');
+Route::get('equipment/create',[PlayerController::class,'create']);
+Route::post('equipment/store', [PlayerController::class,'store'])->name('players.store');
+Route::get('equipment/{equipment}',[PlayerController::class,'show'])->name('player.show');
+Route::put('equipment/{equipment}',[PlayerController::class,'update'])->name('player.update');
+Route::delete('equipment/{destroy}',[PlayerController::class,'destroy'])->name('player.destroy');
+Route::get('equipment/{equipment}/editar',[PlayerController::class,'edit'])->name('player.edit');

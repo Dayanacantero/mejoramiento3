@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+   
     <form action="{{route('equipment.update', $equipment)}}"  method="POST">
 
         @csrf
@@ -18,15 +19,41 @@
         </label>
         <br>
         <label>
-        Descripcion:
+        Ciudad:
         <br>
-        <input name="descripcion" type="text" value="{{old('descripcion',$curso->descripcion)}}">
+        <input name="city" type="text" value="{{old('city',$equipment->city)}}">
         <br>
         </label>
         <br>
+        <label>
+        Estadio:
+        <br>
+        <input name="stadium" type="text" value="{{old('stadium',$equipment->stadium)}}">
+        <br>
+        </label>
+        <br>
+        <br>
+        <label>
+        Aforo:
+        <br>
+        <input name="aforo" type="text" value="{{old('aforo',$equipment->aforo)}}">
+        <br>
+        </label>
+        <br>
+        <br>
+        <label>
+        Año:
+        <br>
+        <input name="year" type="text" value="{{old('year',$equipment->year)}}">
+        <br>
+        </label>
+        <br>
+        <br>
+
+        
        
         <button  type="submit">Actualizar Curso</button>
        
-    </form> 
+    </form>
 </body>
 </html>

@@ -6,27 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{route('equipment.update', $equipment)}}"  method="POST">
+   
+    <form action="{{route('player.update', $player)}}"  method="POST">
 
         @csrf
         @method('put')
         <label>
         Name:
         <br>
-        <input name="name" type="text" value="{{old('Name',$equipment->name) }}">
+        <input name="name" type="text" value="{{old('Name',$player->name) }}">
         <br>
         </label>
         <br>
         <label>
-        Descripcion:
+        Fecha nacimiento:
         <br>
-        <input name="descripcion" type="text" value="{{old('descripcion',$curso->descripcion)}}">
+        <input name="fecha_nacimiento" type="text" value="{{old('fecha_nacimiento',$player->fecha_nacimiento)}}">
         <br>
         </label>
         <br>
+        <label>
+        Posicion:
+        <br>
+        <input name="position" type="text" value="{{old('position',$player->position)}}">
+        <br>
+        </label>
+        <br>
+        <br>
+
+        
        
         <button  type="submit">Actualizar Curso</button>
        
-    </form> 
+    </form>
 </body>
 </html>

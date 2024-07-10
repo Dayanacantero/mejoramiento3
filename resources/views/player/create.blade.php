@@ -8,7 +8,7 @@
 <body>
     <h1>Crear curso</h1>
 
-<form action="{{route('equipment.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('player.store')}}" method="POST" enctype="multipart/form-data">
 
 @csrf
 
@@ -19,27 +19,15 @@
 </label>
 <br>
 <label>
-    Ciudad:
+  Fecha nacimiento:
     <br>
-    <input type="text" name="city">
+    <input type="text" name="fecha_nacimiento">
 </label>
 <br>
 <label>
-    Estadio:
+    Posicion:
     <br>
-    <input type="text" name="stadium">
-</label>
-<br>
-<label>
-    Aforo:
-    <br>
-    <input type="text" name="aforo">
-</label>
-<br>
-<label>
-    Año:
-    <br>
-    <input type="text" name="year">
+    <input type="text" name="position">
 </label>
 <br>
 <br>

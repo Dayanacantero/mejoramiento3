@@ -11,8 +11,9 @@ class EquipmentController extends Controller
 
     public function index()
     {
-        $equipment = Equipment::all();
-        return view('equipment.index', compact('equipment'));
+        $equipment = Equipment::orderBy('id', 'name', 'city', 'stadium', 'aforo', 'year')->get();
+        return view('equipment.listar', compact('equipment'));
+        //return  $cursos;
     }
 
     public function create()
@@ -22,18 +23,15 @@ class EquipmentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'city' => 'required',
-            'stadium' => 'required',
-            'aforo' => 'required',
-            'year' => 'required',
-        ]);
 
-        Equipment::create($request->all());
-
-        return redirect()->route('equipment.index')
-                         ->with('success', 'Equipo creado exitosamente.');
+        $equipment= new Equipment();
+        $equipment->name=$request->name;
+        $equipment->city=$request->city;
+        $equipment->stadium=$request->stadium;
+        $equipment->aforo=$request->aforo;
+        $equipment->year=$request->year;
+        $equipment->save();
+        return $equipment;
     }
 
     public function show(Equipment $equipment)
@@ -43,30 +41,24 @@ class EquipmentController extends Controller
 
     public function edit(Equipment $equipment)
     {
-        return view('equipment.edit', compact('equipment'));
+        return view('equipment.edit',compact('equipment'));
     }
 
     public function update(Request $request, Equipment $equipment)
     {
-        $request->validate([
-            'name' => 'required',
-            'city' => 'required',
-            'stadium' => 'required',
-            'aforo' => 'required',
-            'year' => 'required',
-        ]);
-
-        $equipment->update($request->all());
-
-        return redirect()->route('equipment.index')
-                         ->with('success', 'Equipo actualizado exitosamente.');
+        $equipment->name = $request->name;
+        $equipment->city = $request->city;
+        $equipment->stadium = $request->stadium;
+        $equipment->aforo = $request->aforo;
+        $equipment->year = $request->year;
+        $equipment->save();
+        return redirect()->route('equipment.index');
     }
 
     public function destroy(Equipment $equipment)
     {
-        $equipment->delete();
 
-        return redirect()->route('equipment.index')
-                         ->with('success', 'Equipo eliminado exitosamente.');
+        $equipment->delete();
+        return redirect()->route('equipment.index');
     }
 }

@@ -9,63 +9,50 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        $players = Player::all();
-        return view('players.index', compact('players'));
+        $player = Player::orderBy('id', 'name', 'fecha_nacimiento', 'position')->get();
+        return view('player.listar', compact('players'));
+        //return  $cursos;
     }
 
     // Método para mostrar el formulario de creación de jugadores
     public function create()
     {
-        return view('players.create');
+        return view('player.create');
     }
 
     // Método para almacenar un nuevo jugador
     public function store(Request $request)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'fecha_nacimiento' => 'nullable|date',
-            'position' => 'required|string|max:255',
-        ]);
-
-        // Crear un nuevo jugador
-        Player::create($request->all());
-
-        // Redireccionar a la lista de jugadores con mensaje de éxito
-        return redirect()->route('players.index')->with('success', 'Jugador creado correctamente.');
+        $player= new Player();
+        $player->name=$request->name;
+        $player->fecha_nacimiento=$request->fecha_nacimiento;
+        $player->position=$request->position;
+        $player->save();
+        return $player;
     }
+    public function show(Player $player) {
+       
+     
+        return view('player.show', compact('player'));
 
-    // Método para mostrar el formulario de edición de un jugador
+    }
     public function edit(Player $player)
     {
-        return view('players.edit', compact('player'));
+        return view('player.edit',compact('player'));
     }
 
     // Método para actualizar un jugador
     public function update(Request $request, Player $player)
     {
-        // Validar los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'fecha_nacimiento' => 'nullable|date',
-            'position' => 'required|string|max:255',
-        ]);
-
-        // Actualizar el jugador
-        $player>update($request->all());
-
-        // Redireccionar a la lista de jugadores con mensaje de éxito
-        return redirect()->route('players.index')->with('success', 'Jugador actualizado correctamente.');
+        $player->name = $request->name;
+        $player->fecha_nacimiento=$request->fecha_nacimiento;
+        $player->position=$request->position;
+        $player->save();
+        return redirect()->route('player.index');
     }
-
-    // Método para eliminar un jugador
     public function destroy(Player $player)
     {
-        // Eliminar el jugador
         $player->delete();
-
-        // Redireccionar a la lista de jugadores con mensaje de éxito
-        return redirect()->route('players.index')->with('success', 'Jugador eliminado correctamente.');
+        return redirect()->route('player.index');
     }
 }

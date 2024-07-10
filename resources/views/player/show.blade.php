@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
- 
+    <h1>hola desde show:</h1>
+    {{$player}}
 </body>
 </html>

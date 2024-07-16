@@ -9,7 +9,7 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        $player = Player::orderBy('id', 'name', 'fecha_nacimiento', 'position')->get();
+        $player = Player::orderBy('id', 'desc')->get();
         return view('player.listar', compact('players'));
         //return  $cursos;
     }

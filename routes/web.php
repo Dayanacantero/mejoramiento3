@@ -16,10 +16,10 @@ Route::put('equipment/{equipment}',[EquipmentController::class,'update'])->name(
 Route::delete('equipment/{destroy}',[EquipmentController::class,'destroy'])->name('equipment.destroy');
 Route::get('equipment/{equipment}/editar',[EquipmentController::class,'edit'])->name('equipment.edit');
 
-Route::get('equipment/listar',[PlayerController::class,'index'])->name('player.index');
-Route::get('equipment/create',[PlayerController::class,'create']);
-Route::post('equipment/store', [PlayerController::class,'store'])->name('players.store');
-Route::get('equipment/{equipment}',[PlayerController::class,'show'])->name('player.show');
-Route::put('equipment/{equipment}',[PlayerController::class,'update'])->name('player.update');
-Route::delete('equipment/{destroy}',[PlayerController::class,'destroy'])->name('player.destroy');
-Route::get('equipment/{equipment}/editar',[PlayerController::class,'edit'])->name('player.edit');
+Route::get('player/listar',[PlayerController::class,'index'])->name('player.index');
+Route::get('player/create',[PlayerController::class,'create']);
+Route::post('player/store', [PlayerController::class,'store'])->name('players.store');
+Route::get('player/{show}',[PlayerController::class,'show'])->name('player.show');
+Route::put('player/{player}',[PlayerController::class,'update'])->name('player.update');
+Route::delete('player/{destroy}',[PlayerController::class,'destroy'])->name('player.destroy');
+Route::get('player/{player}/editar',[PlayerController::class,'edit'])->name('player.edit');

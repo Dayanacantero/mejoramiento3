@@ -12,10 +12,10 @@ class Goal extends Model
     protected $fillable = ['desc', 'minute'];
 
     public function players(){
-        return $this->hasMany('App\Models\Player');
+        return $this->belongsTo('App\Models\Player');
     }
 
     public function games(){
-        return $this->belongsTo('App\Models\Game');
+        return $this->hasMany('App\Models\Game');
     }
 }

@@ -11,7 +11,7 @@ class EquipmentController extends Controller
 
     public function index()
     {
-        $equipment = Equipment::orderBy('id', 'name', 'city', 'stadium', 'aforo', 'year')->get();
+        $equipment = Equipment::orderBy('id', 'desc')->get();
         return view('equipment.listar', compact('equipment'));
         //return  $cursos;
     }

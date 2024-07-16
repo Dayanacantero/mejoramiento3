@@ -12,7 +12,7 @@ class Game extends Model
     protected $fillable = ['goals_fuera', 'goals_casa', 'fecha'];
 
     public function goals(){
-        return $this->hasMany('App\Models\Goal');
+        return $this->belongsTo('App\Models\Goal');
     }
 
     public function equipment(){

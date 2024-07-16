@@ -12,7 +12,7 @@ class Equipment extends Model
     protected $fillable = ['name', 'city', 'stadium', 'aforo', 'year', 'president_id'];
 
     public function players(){
-        return $this->hasMany('App\Models\Player');
+        return $this->belongsTo('App\Models\Player');
     }
 
     public function games(){
